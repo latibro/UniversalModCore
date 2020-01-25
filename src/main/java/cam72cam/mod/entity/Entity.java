@@ -251,4 +251,8 @@ public class Entity {
     public int getId() {
         return internal.getEntityId();
     }
+
+    public String toString() {
+        return internal.toString();
+    }
 }

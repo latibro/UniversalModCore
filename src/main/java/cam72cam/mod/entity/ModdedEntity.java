@@ -252,6 +252,7 @@ public class ModdedEntity extends Entity implements IEntityAdditionalSpawnData {
                 pos = pos.add(motionX, motionY, motionZ);
             }
 
+            ModCore.debug("[Riding] Setting position of passenger %s to %s while riding %s", passenger, pos, this);
             passenger.setPosition(pos);
             passenger.setVelocity(new Vec3d(motionX, motionY, motionZ));
 
@@ -272,7 +273,9 @@ public class ModdedEntity extends Entity implements IEntityAdditionalSpawnData {
             Vec3d offset = passengerPositions.get(passenger.getUUID());
             if (offset != null) {
                 offset = iRidable.onDismountPassenger(passenger, offset);
-                passenger.setPosition(calculatePassengerPosition(offset));
+                Vec3d pos = calculatePassengerPosition(offset);
+                ModCore.debug("[Dismount] Setting position of passenger %s to %s while riding %s", passenger, pos, this);
+                passenger.setPosition(pos);
             }
             passengerPositions.remove(passenger.getUUID());
         }
