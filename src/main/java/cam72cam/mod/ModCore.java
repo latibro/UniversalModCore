@@ -82,11 +82,11 @@ public class ModCore {
 
     public void preInit(FMLCommonSetupEvent event) {
         logger = LogManager.getLogger();
-        proxy.event(ModEvent.INITIALIZE);
         hasResources = true;
     }
 
     public void init(InterModEnqueueEvent event) {
+        proxy.event(ModEvent.INITIALIZE);
         proxy.event(ModEvent.SETUP);
     }
 
